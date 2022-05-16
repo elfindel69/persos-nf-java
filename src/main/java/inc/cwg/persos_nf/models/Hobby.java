@@ -1,5 +1,7 @@
 package inc.cwg.persos_nf.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,7 @@ public class Hobby {
     @JoinTable(name = "hobby_personnages",
             joinColumns = @JoinColumn(name = "hobby_null"),
             inverseJoinColumns = @JoinColumn(name = "personnages_null"))
+    @JsonIgnore
     private List<Personnage> personnages = new ArrayList<>();
 
     public List<Personnage> getPersonnages() {
