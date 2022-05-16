@@ -1,6 +1,16 @@
 package inc.cwg.persos_nf.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+
 public class Lieu {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String ville;
     private String etat;
     private String systeme;
@@ -11,6 +21,18 @@ public class Lieu {
         this.etat = etat;
         this.systeme = systeme;
         this.pays = pays;
+    }
+
+    public Lieu() {
+
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getVille() {
@@ -48,7 +70,8 @@ public class Lieu {
     @Override
     public String toString() {
         return "Lieu{" +
-                "ville='" + ville + '\'' +
+                "id=" + id +
+                ", ville='" + ville + '\'' +
                 ", etat='" + etat + '\'' +
                 ", systeme='" + systeme + '\'' +
                 ", pays='" + pays + '\'' +

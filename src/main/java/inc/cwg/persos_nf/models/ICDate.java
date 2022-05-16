@@ -1,6 +1,15 @@
 package inc.cwg.persos_nf.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class ICDate {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private int annee;
     private int mois;
     private int jour;
@@ -9,6 +18,18 @@ public class ICDate {
         this.annee = annee;
         this.mois = mois;
         this.jour = jour;
+    }
+
+    public ICDate() {
+
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public int getAnnee() {
@@ -38,7 +59,8 @@ public class ICDate {
     @Override
     public String toString() {
         return "ICDate{" +
-                "annee=" + annee +
+                "id=" + id +
+                ", annee=" + annee +
                 ", mois=" + mois +
                 ", jour=" + jour +
                 '}';

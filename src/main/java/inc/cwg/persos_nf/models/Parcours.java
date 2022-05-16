@@ -1,14 +1,36 @@
 package inc.cwg.persos_nf.models;
 
+import javax.persistence.*;
+
+@Entity
 public class Parcours {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String nom;
     private int anneeAD;
     private int anneeIC;
+
+    @ManyToOne
+    @JoinColumn(name = "personnage_id")
+    private Personnage personnage;
+
+    public Personnage getPersonnage() {
+        return personnage;
+    }
+
+    public void setPersonnage(Personnage personnage) {
+        this.personnage = personnage;
+    }
 
     public Parcours(String nom, int anneeAD, int anneeIC) {
         this.nom = nom;
         this.anneeAD = anneeAD;
         this.anneeIC = anneeIC;
+    }
+
+    public Parcours() {
+
     }
 
     public String getNom() {
@@ -38,7 +60,8 @@ public class Parcours {
     @Override
     public String toString() {
         return "Parcours{" +
-                "nom='" + nom + '\'' +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
                 ", anneeAD=" + anneeAD +
                 ", anneeIC=" + anneeIC +
                 '}';
